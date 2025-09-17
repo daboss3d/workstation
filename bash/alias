@@ -1,0 +1,6 @@
+alias la="ls -la"
+
+# Tmux
+alias tnew="tmux new -s"
+alias tls="tmux ls"
+alias trename="tmux rename-session -t"
