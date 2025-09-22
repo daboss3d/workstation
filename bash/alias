@@ -4,3 +4,21 @@ alias la="ls -la"
 alias tnew="tmux new -s"
 alias tls="tmux ls"
 alias trename="tmux rename-session -t"
+
+function md() {
+echo "hello v 4"
+# pandoc --from markdown --to html5 --standalone --embed-resources --highlight-style=breezeDark
+cp /home/daboss/knowledge/themes/pandoc/pandoc-dark-xai.css /tmp/pandoc.css
+
+// extract filename from path
+  filename=$(basename -- "$1")
+  extension="${filename##*.}"
+  filename="${filename%.*}"
+  echo "filename: $filename Extension: $extension"
+
+
+pandoc  -c pandoc.css -s --standalone -f markdown+smart $1 > /tmp/$filename.html
+#  cp /home/daboss/knowledge/themes/pandoc/dark-pandoc.css /tmp/pandoc.css
+#  xdg-open /tmp/$1.html
+  omarchy-launch-webapp file:///tmp/$filename.html
+}
