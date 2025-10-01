@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>$title$</title>
+  <style>
+    .edit-btn {
+      display: inline-block;
+      margin: 0.5em;
+      padding: 0.5em 0.5em;
+      background: #007acc;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-family: sans-serif;
+    }
+    .edit-btn:hover {
+      background: #005a99;
+    }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      display: flex;
+    }
+   .sidebar {
+      width: 220px;
+      background: #2e2e2e;
+      padding: 1em;
+      height: 100vh; /* full height */
+      overflow-y: auto;
+      position: fixed;
+      left: 0;
+      top: 0;
+      border-right: 1px solid #3e3e3e;
+    }
+    .content {
+      margin-left: 240px; /* leave space for sidebar */
+      padding: 0.5em 0.5em;
+      flex: 1;
+      overflow-x: auto;
+      max-width: 80% !important;
+
+    } 
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar li {
+      margin: 0.5em 0;
+    }
+    .sidebar a {
+      text-decoration: none;
+      color: #007acc;
+    }
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+  </style>
+<link rel="stylesheet" href="dark-pandoc.css" />
+</head>
+<body>
+
+<!-- Button at the top -->
+    <!-- <a class="edit-btn" href="nvim://$mdpath$">✏️ Edit Markdown</a>  -->
+
+      <div class="sidebar">
+    $if(dab_menu)$
+      $dab_menu$
+    $endif$
+  </div>
+
+
+<div class="content">
+    <a class="edit-btn" href="nvim://$mdpath$">✏️ Edit Markdown</a>
+    <hr>
+    $body$
+  </div>
+
+</body>
+</html>

@@ -11,9 +11,7 @@
     overflow-y: scroll;
     padding: 1em;
 }
-body {
-    padding-left: 22em;
-}   
+
 
 html {
   font-size: 100%;
@@ -27,10 +25,15 @@ body {
   font-family: monospace;
   font-size: 14px;
   line-height: 1.7;
-  padding: 1em;
-  margin: auto;
-  max-width: 42em;
+  padding: 0.5em 0.5em;
+  margin: 0.5em auto;
+  max-width: 80% !important;
   background: #1e1e1e;
+}
+
+code {
+  padding: 0.2em 0.4em;
+  border-radius: 0.2em;
 }
 
 .title {
@@ -142,6 +145,7 @@ hr {
 }
 
 pre, code, kbd, samp {
+  background: #333;
   color: #e0e0e0;
   font-family: monospace, monospace;
   _font-family: 'courier new', monospace;

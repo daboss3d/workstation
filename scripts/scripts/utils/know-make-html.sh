@@ -3,7 +3,7 @@
 INDIR=~/knowledge/
 OUTDIR=~/knowledge/output/
 CSSFILE=~/knowledge/themes/pandoc/dark-pandoc.css
-
+TEMPLATEDIR=/home/daboss/knowledge/templates
 echo "Generating HTML files from markdown in $INDIR to $OUTDIR"
 
 FIND_CMD="find $INDIR -type f -name '*.md'"
@@ -17,10 +17,23 @@ for FILE in $(eval $FIND_CMD); do
 
   OUT_PATH="$OUTDIR/$FILENAME.html"
 
+  #  MENU_LINKS=$(~/scripts/utils/know-make-menu.sh)
+  #  Pipe the output to a file
+  echo $(~/scripts/utils/know-make-menu.sh) >"$OUTDIR/dab_menu.html"
+
+  # ne can use the --variable option instead of metadata, as variables are inserted verbatim into the template without escaping.
+  #
   mkdir -p "$OUT_DIR"
 
   echo "Converting $FILE to $OUT_PATH"
-  pandoc "$FILE" -o "$OUT_PATH" --css "$CSSFILE" --metadata title="${FILENAME}" --standalone
+  pandoc "$FILE" \
+    -o "$OUT_PATH" \
+    --css "$CSSFILE" \
+    --metadata title="${FILENAME}" \
+    --standalone \
+    -M mdpath="$(realpath "$FILE")" \
+    --variable dab_menu="$(</$OUTDIR/dab_menu.html)" \
+    --template="$TEMPLATEDIR/"edit-file.html
 done
 
 cp "$CSSFILE" "$OUTDIR/"

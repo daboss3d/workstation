@@ -1,0 +1,30 @@
+#!/bin/bash
+# Strip "nvim://" prefix
+#file="${1#nvim://}"
+# Strip the scheme prefix
+url="$1"
+file="${url#nvim://}"
+
+# Decode %20 and other escapes
+file="$(printf '%b' "${file//%/\\x}")"
+
+# Record modification time before editing
+before=$(stat -c %Y "$file")
+
+# Open in Neovim inside your preferred terminal emulator
+alacritty -e nvim "$file"
+
+# Record modification time after editing
+after=$(stat -c %Y "$file")
+
+# If file was updated, run Pandoc
+if [ "$after" -ne "$before" ]; then
+  output_dir="$HOME/knowledge/output"
+  mkdir -p "$output_dir"
+
+  base=$(basename "$file" .md)
+  #   pandoc "$file" -o "$output_dir/$base.html" --template="$HOME/template.html"
+  #
+  notify-send "Pandoc" "Rebuilt -> $base.html"
+  ~/scripts/utils/md-to-html.sh -f "$file" -d "$output_dir"
+fi

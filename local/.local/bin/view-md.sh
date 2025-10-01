@@ -1,20 +1,10 @@
 #!/usr/bin/env bash
 
 # check if pandock is installed, if not show error message and exit
-
 if ! command -v pandoc &>/dev/null; then
   echo "pandoc could not be found, please install it first"
   exit
 fi
-
-# make sure there is a file and terminates with .md
-#if [ -z "$1" ] || [[ "$1" != *.md ]]; then
-# get name of the script
-#  script_name=$(basename "$0")
-#  script_name="${script_name%.*}"
-#  echo "Usage: $script_name <file.md>"
-#  exit
-#fi
 
 # defaults
 DIR="/tmp/"
