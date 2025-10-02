@@ -1,9 +1,10 @@
 alias la="ls -la"
-
 # Tmux
 alias tnew="tmux new -s"
 alias tls="tmux ls"
 alias trename="tmux rename-session -t"
+alias tsession="~/scripts/utils/tmux-session.sh -n"
+
 
 function md() {
 echo "hello v 4"

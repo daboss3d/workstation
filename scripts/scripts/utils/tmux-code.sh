@@ -13,12 +13,24 @@ DEFAULT_DIR="$HOME"
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
 source $SCRIPT_DIR/read-parameters.sh
+
+# if parameter -h is passed, show help and exit
+if [[ " $* " == *" -h "* ]]; then
+  echo "Usage: $0 [-d directory] [-n session_name]"
+  echo "  -d directory     Directory to open in tmux (default: $DEFAULT_DIR)"
+  echo "  -n session_name  Name of the tmux session (default: codeing)"
+  exit 0
+fi
+
 DIR=$(get_param -d "$@")
 DIR=${DIR:-$DEFAULT_DIR}
-echo "-d parameter is $DIR"
-#exit
+#echo "-d parameter is $DIR"
 
-SESSION_NAME="codeing"
+SESSION_NAME=$(get_param -n "$@")
+SESSION_NAME=${SESSION_NAME:-"codeing"}
+# echo "Session name is $SESSION_NAME"
+
+#SESSION_NAME="codeing"
 WINDOW_1="shell"
 WINDOW_2="editor"
 
