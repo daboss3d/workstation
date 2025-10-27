@@ -1,6 +1,25 @@
 Stow tips 
 ----------------- 
 
+### Installation 
+
+```shell
+
+# Install tmux plugins
+git clone https://github.com/tmux-plugins/tpm ~/stow-files/config/.config/tmux/plugins/
+git clone https://github.com/vaaleyard/tmux-dotbar.git ~/stow-files/config/.config/tmux/plugins/
+
+# stow the files (make links in home dir)
+stow config
+
+# source the tmux config file to apply changes
+tmux source ~/.config/tmux/tmux.conf
+```
+
+
+
+
+
 ### e.g. for bash
 
 ```shell 
@@ -15,7 +34,7 @@ stow bash
 # list files to check simlink
 ls -la ~
 ```
-```
+
 
 
 ### local - e.g stow local 

@@ -5,7 +5,9 @@ alias tls="tmux ls"
 alias trename="tmux rename-session -t"
 alias tsession="~/scripts/utils/tmux-session.sh -n"
 
+alias ai="~/scripts/utils/ai.sh"
 
+# functions
 function md() {
 echo "hello v 4"
 # pandoc --from markdown --to html5 --standalone --embed-resources --highlight-style=breezeDark
