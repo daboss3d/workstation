@@ -1,0 +1,37 @@
+FROM ubuntu:24.04
+
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y curl git ripgrep fd-find python3-pip python3-venv nodejs npm neovim && \
+    apt-get clean
+
+# Node.js (for LSP and formatters)
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
+    apt-get install -y nodejs
+
+# LSP servers and formatters
+RUN npm install -g \
+    typescript typescript-language-server \
+    pyright \
+    dockerfile-language-server-nodejs \
+    eslint prettier \
+    dockerfilelint
+
+# Python LSP, linters, formatters
+# Set up Python environment and install tools
+#RUN python3 -m venv /home/lazyvim/pyenv && \
+#    /home/lazyvim/pyenv/bin/pip install --upgrade pip && \
+ #   /home/lazyvim/pyenv/bin/pip install black flake8 isort
+
+#ENV PATH="/home/lazyvim/pyenv/bin:$PATH"
+
+# Optional: set up a user
+#RUN useradd -ms /bin/bash lazyvim
+#USER lazyvim
+#WORKDIR /home/lazyvim
+
+# Install LazyVim starter config
+RUN git clone https://github.com/LazyVim/starter ~/.config/nvim
+
+# ENTRYPOINT to nvim
+ENTRYPOINT ["nvim"]

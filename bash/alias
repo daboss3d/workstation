@@ -7,7 +7,21 @@ alias tsession="~/scripts/utils/tmux-session.sh -n"
 
 alias ai="~/scripts/utils/ai.sh"
 
+alias d="docker"
+alias dps="docker ps"
+alias ds="docker stop"
+alias dnvim="~/scripts/docker/lazyvim_docker/dnvim.sh"
+
 # functions
+
+# docker stop and remove container
+function dsr() {
+  echo "Stopping and removing container: $1"
+  docker stop $1
+  docker rm $1
+}
+
+
 function md() {
 echo "hello v 4"
 # pandoc --from markdown --to html5 --standalone --embed-resources --highlight-style=breezeDark
