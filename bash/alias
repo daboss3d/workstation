@@ -11,6 +11,9 @@ alias d="docker"
 alias dps="docker ps"
 alias ds="docker stop"
 alias dnvim="~/scripts/docker/lazyvim_docker/dnvim.sh"
+alias lg="lazygit"
+alias ld="lazydocker"
+
 
 # functions
 
