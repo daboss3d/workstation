@@ -6,6 +6,7 @@ alias trename="tmux rename-session -t"
 alias tsession="~/scripts/utils/tmux-session.sh -n"
 
 alias ai="~/scripts/utils/ai.sh"
+alias dpi="~/code/foss/pi-extensions/scripts/pi.sh"
 
 alias d="docker"
 alias dps="docker ps"
@@ -13,7 +14,6 @@ alias ds="docker stop"
 alias dnvim="~/scripts/docker/lazyvim_docker/dnvim.sh"
 alias lg="lazygit"
 alias ld="lazydocker"
-
 
 # functions
 
